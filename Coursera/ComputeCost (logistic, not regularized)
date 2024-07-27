@@ -1,0 +1,34 @@
+# UNQ_C2
+# GRADED FUNCTION: compute_cost
+def compute_cost(X, y, w, b, lambda_= 1):
+    """
+    Computes the cost over all examples
+    Args:
+      X : (ndarray Shape (m,n)) data, m examples by n features
+      y : (array_like Shape (m,)) target value 
+      w : (array_like Shape (n,)) Values of parameters of the model      
+      b : scalar Values of bias parameter of the model
+      lambda_: unused placeholder
+    Returns:
+      total_cost: (scalar)         cost 
+    """
+
+    m, n = X.shape
+    total_cost = 0;
+    ### START CODE HERE ###
+    
+    for i in range(m):
+        
+        zWBxI = np.dot(w, X[i]) + b;
+        fWBxI = sigmoid(zWBxI);
+    
+        cost = (-y[i] * np.log(fWBxI)) - (1 - y[i] ) * np.log(1-fWBxI);
+        
+        total_cost +=cost;
+    
+    total_cost = (total_cost / m);
+        
+    
+    ### END CODE HERE ### 
+
+    return total_cost
